@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+:root {
+  --main-color: #4b81e2;
+  --secont-color: #e8dfca;
+  --thirth-color: #f5efe6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html {
+  background-color: var(--secont-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.foto-pizza {
+  display: flex;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.foto-pizza-img {
+  width: 100%;
+  max-height: 25vh;
+  min-height: 20vh;
+  object-fit: cover;
+  object-position: 50% 70%;
+}
+
+.logo-img {
+  max-width: 12rem;
+  border-radius: 100%;
+  margin-left: 3rem;
+  margin-top: -10rem;
+}
+
+.titulo-centro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  margin: -3rem auto 4rem;
+}
+
+.titulo-centro h1 {
+  font-family: var(--title-font);
+  font-size: 350%;
+  margin: 1rem 0 0 0;
+}
+.titulo-centro h4 {
+  font-family: var(--subtitle-font);
+  font-size: 120%;
+  color: #fff;
+  background-color: var(--main-color);
+  margin: 0 auto 2.5rem;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0 1rem 0;
+}
+.cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  width: 20rem;
+  border-radius: 0.75rem;
+  box-shadow: 7px 7px 14px gray;
+}
+.card img {
+  max-width: 6rem;
+  max-height: 6rem;
+  margin: 0.5rem 1rem 0.5rem 0.5rem;
+}
+.card h2 {
+  color: green;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media only screen and (max-width: 840px) {
+  .logo {
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  .logo-img {
+    max-width: 11rem;
+    border-radius: 100%;
+    margin: -5.5rem 0 0 0;
+  }
+  .titulo-centro {
+    margin: -1rem auto 0;
+  }
+  .titulo-centro h1 {
+    font-family: var(--title-font);
+    font-size: 300%;
+  }
+  article {
+    margin-top: 5rem;
+    font-size: 20px;
   }
 }
