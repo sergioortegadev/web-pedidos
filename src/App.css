@@ -1,11 +1,11 @@
 :root {
   --main-color: #4b81e2;
-  --secont-color: #e8dfca;
+  --second-color: #e8dfca;
   --thirth-color: #f5efe6;
 }
 
 html {
-  background-color: var(--secont-color);
+  background-color: var(--second-color);
 }
 
 .foto-pizza {
@@ -91,8 +91,8 @@ html {
     font-family: var(--title-font);
     font-size: 300%;
   }
-  article {
+  /*   article {
     margin-top: 5rem;
     font-size: 20px;
-  }
+  } */
 }

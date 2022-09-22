@@ -1,9 +1,8 @@
-import React from "react";
 import { useModal } from "./hooks/useModal";
 import Modal from "./Modal";
 import "./Modal.css";
 
-const Main = () => {
+const Modals = () => {
   const [isOpenModal01, openModal01, closeModal01] = useModal(false);
   const [isOpenModal02, openModal02, closeModal02] = useModal(false);
   const [isOpenModal03, openModal03, closeModal03] = useModal(false);
@@ -14,53 +13,9 @@ const Main = () => {
   const agregarCarrito = () => console.log("Agregar producto al carrito");
 
   return (
-    <>
-      <section className="contenedor">
-        <div className="cards">
-          <figure onClick={openModal01} className="card">
-            <img src="./assets/pizza1.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Pizza Capresse</h3>
-              <h2>$900</h2>
-            </figcaption>
-          </figure>
-          <figure onClick={openModal02} className="card">
-            <img src="./assets/pizza2.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Tomate y Ajíes</h3>
-              <h2>$950</h2>
-            </figcaption>
-          </figure>
-          <figure onClick={openModal03} className="card">
-            <img src="./assets/pizza3.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Huevo y longaniza</h3>
-              <h2>$990</h2>
-            </figcaption>
-          </figure>
-          <figure onClick={openModal04} className="card">
-            <img src="./assets/pizza4.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Finas hierbas</h3>
-              <h2>$850</h2>
-            </figcaption>
-          </figure>
-          <figure onClick={openModal05} className="card">
-            <img src="./assets/pizza1.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Albaca y cherry</h3>
-              <h2>$930</h2>
-            </figcaption>
-          </figure>
-          <figure onClick={openModal06} className="card">
-            <img src="./assets/pizza2.jpg" alt="Pizza capresse" />
-            <figcaption>
-              <h3>Mediterranea</h3>
-              <h2>$920</h2>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
+    <div>
+      <h3>Componente Padre (Modals.js)</h3>
+      <button onClick={openModal01}>Modal 1</button>
       <Modal isOpen={isOpenModal01} closeModal={closeModal01}>
         <div className="modal-head">
           <img src="./assets/pizza1.jpg" alt="Pizza capresse" />
@@ -241,8 +196,8 @@ const Main = () => {
           Praesentium explicabo vel quaerat eos neque quisquam ex.
         </p>
       </Modal>
-    </>
+    </div>
   );
 };
 
-export default Main;
+export default Modals;

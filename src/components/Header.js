@@ -10,7 +10,7 @@ const Header = () => {
         <img src="/assets/logo.png" alt="" className="logo-img" />
       </div>
       <div className="titulo-centro">
-        <h1>Pizzería Ejemplo</h1>
+        <h1>Pizzería Dev's</h1>
         {/* <h4>Hacé tu pedido aquí</h4> */}
       </div>
     </>
