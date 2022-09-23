@@ -15,6 +15,10 @@ const Main = () => {
 
   return (
     <>
+      <div className="div-cart">
+        <img src="./assets/cart.png" alt="cart" />
+        <h3 className="cart-items">5</h3>
+      </div>
       <section className="contenedor">
         <div className="cards">
           <figure onClick={openModal01} className="card">
@@ -72,23 +76,8 @@ const Main = () => {
           </div>
         </div>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad illo
-          reprehenderit nihil recusandae molestias libero maxime commodi nostrum
-          sapiente odit fuga, deserunt incidunt error nesciunt omnis labore?
-          Doloribus, corrupti odio? Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Vero deleniti expedita, pariatur maxime, quam nobis
-          reiciendis atque porro quae qui assumenda iste veritatis! Deserunt
-          tenetur maxime, rem quaerat iure dolores? Lorem ipsum dolor sit amet
-          consectetur, adipisicing elit. Quo adipisci reprehenderit, facere
-          ipsa, nulla consectetur nihil ratione earum accusamus culpa maiores at
-          nobis doloribus, beatae odio mollitia commodi excepturi perspiciatis!
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem
-          blanditiis eligendi dolore eveniet perspiciatis cumque, sed, at iste,
-          numquam quos quia dicta quisquam quasi. Ad vel impedit consequuntur
-          asperiores deserunt!k Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Iusto sapiente eos magni cumque, recusandae dolor
-          hic consectetur assumenda exercitationem libero, fuga perferendis.
-          Praesentium explicabo vel quaerat eos neque quisquam ex.
+          Mozzarella, concassé de tomates frescos, aceite de albahaca y olivas
+          negras.
         </p>
       </Modal>
       <Modal isOpen={isOpenModal02} closeModal={closeModal02}>
