@@ -1,8 +1,10 @@
 :root {
   --main-color: #4b81e2;
+  --main-color-hover: #5b8ce7;
+  --main-color-active: #74a3fa;
   --second-color: #e8dfca;
   --thirth-color: #f5efe6;
-  --forth-color: #858585;
+  --fourth-color: #858585;
   --fifth-color: #f1ece1;
   --button-money: rgb(0, 128, 0);
   --title-font: "Grape Nuts", cursive;
@@ -53,7 +55,7 @@ html {
 }
 /* Cart */
 .div-cart {
-  display: flex;
+  display: none;
   justify-content: center;
   min-width: 2rem;
   max-width: 3.5rem;
@@ -63,6 +65,17 @@ html {
   padding: 0.3rem 0.6rem;
   border-radius: 0.6rem;
   background-color: #4b81e2;
+  box-shadow: 7px 7px 10px gray;
+}
+.div-cart.is-open {
+  display: flex;
+}
+.div-cart:hover {
+  background-color: var(--main-color-hover);
+}
+.div-cart:active {
+  background-color: var(--main-color-active);
+  box-shadow: 2px 3px 7px gray;
 }
 .div-cart img {
   width: 1.5rem;
@@ -85,7 +98,7 @@ html {
   flex-direction: column;
   max-width: 1200px;
   justify-content: center;
-  margin: 0 1rem 0;
+  margin: 0 auto 0;
 }
 .cards {
   display: flex;
@@ -97,7 +110,7 @@ html {
   display: flex;
   width: 20rem;
   border-radius: 0.75rem;
-  box-shadow: 7px 7px 14px gray;
+  box-shadow: 10px 10px 25px gray;
 }
 .card:hover {
   background-color: var(--fifth-color);
