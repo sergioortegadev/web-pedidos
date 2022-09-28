@@ -72,8 +72,8 @@
   top: 1.3rem;
   right: 1.3rem;
   background-color: transparent;
-  color: var(--fourth-color);
-  border: 2px solid var(--fourth-color);
+  color: var(--main-color);
+  border: 2px solid var(--main-color);
   border-radius: 100%;
   font-weight: bold;
   font-size: large;
@@ -96,8 +96,23 @@
 .modal-tit h3 {
   width: 70%;
 }
-.modal-tit button {
+.btn-agregar-carrito {
   margin: 0 auto 0;
+}
+.modal-btn-mas-menos {
+  padding: 0.4rem 0.8rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: large;
+  box-shadow: 7px 7px 14px rgba(155, 155, 155);
+}
+.modal-cantidad {
+  padding: 0.4rem 0.8rem;
+  font-weight: bold;
+  font-size: large;
 }
 
 .btn-agregar-carrito {
@@ -118,6 +133,15 @@
 .btn-agregar-carrito:active {
   background-color: #235f31;
   box-shadow: 2px 3px 7px rgba(155, 155, 155);
+}
+
+.cart-delete-btn {
+  color: #f00;
+  background-color: transparent;
+  border: 2px solid var(--main-color);
+  border-radius: 100%;
+  font-weight: bold;
+  font-size: large;
 }
 
 @media only screen and (max-width: 840px) {

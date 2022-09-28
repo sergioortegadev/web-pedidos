@@ -5,6 +5,7 @@ import { useModal } from "./hooks/useModal";
 import Modal from "./Modal";
 import ModalConfirm from "./ModalConfirm";
 import "./Modal.css";
+import Cart from "./Cart";
 
 const Main = () => {
   /* Apertura y Cierre Ventanas Modales */
@@ -19,56 +20,276 @@ const Main = () => {
 
   /* Botón agregar al carrito */
   let item = {};
-  let idOrder = Date.now();
+  let existItem = {};
+  // let idOrder = Date.now();
   let order = [item];
 
   const agregarCarrito00 = () => {
-    if (sessionStorage.getItem(`order`) === null) {
-      item.id = idOrder;
+    if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad00;
       item.id = carta[0].id;
       item.product = `${carta[0].prodName}`;
       item.subTotal = cantidad00 * carta[0].price;
+      item.image = carta[0].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
-      item.id = idOrder;
       item.quantity = cantidad00;
       item.id = carta[0].id;
       item.product = `${carta[0].prodName}`;
       item.subTotal = cantidad00 * carta[0].price;
-      order.push(item);
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+      item.image = carta[0].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad00;
+            existItem.id = carta[0].id;
+            existItem.product = `${carta[0].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad00) * carta[0].price;
+            existItem.image = carta[0].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
     }
   };
 
   const agregarCarrito01 = () => {
-    if (sessionStorage.getItem(`order`) === null) {
-      item.id = idOrder;
+    if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad01;
       item.id = carta[1].id;
       item.product = `${carta[1].prodName}`;
       item.subTotal = cantidad01 * carta[1].price;
+      item.image = carta[1].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
-      item.id = idOrder;
       item.quantity = cantidad01;
       item.id = carta[1].id;
       item.product = `${carta[1].prodName}`;
       item.subTotal = cantidad01 * carta[1].price;
-      order.push(item);
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+      item.image = carta[1].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad01;
+            existItem.id = carta[1].id;
+            existItem.product = `${carta[1].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad01) * carta[1].price;
+            existItem.image = carta[1].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
     }
   };
-  // HACER METODOS COMO EL DE ARRIBA Y BORRAR ESTE
-  const agregarCarrito = () => {
-    console.log("agregar");
+
+  const agregarCarrito02 = () => {
+    if (!sessionStorage.getItem(`order`)) {
+      item.quantity = cantidad02;
+      item.id = carta[2].id;
+      item.product = `${carta[2].prodName}`;
+      item.subTotal = cantidad02 * carta[2].price;
+      item.image = carta[2].image;
+      sessionStorage.setItem(`order`, JSON.stringify(order));
+    } else {
+      order = JSON.parse(sessionStorage.getItem(`order`));
+      item.quantity = cantidad02;
+      item.id = carta[2].id;
+      item.product = `${carta[2].prodName}`;
+      item.subTotal = cantidad02 * carta[2].price;
+      item.image = carta[2].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad02;
+            existItem.id = carta[2].id;
+            existItem.product = `${carta[2].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad02) * carta[2].price;
+            existItem.image = carta[2].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
+    }
   };
+
+  const agregarCarrito03 = () => {
+    if (!sessionStorage.getItem(`order`)) {
+      item.quantity = cantidad03;
+      item.id = carta[3].id;
+      item.product = `${carta[3].prodName}`;
+      item.subTotal = cantidad03 * carta[3].price;
+      item.image = carta[3].image;
+      sessionStorage.setItem(`order`, JSON.stringify(order));
+    } else {
+      order = JSON.parse(sessionStorage.getItem(`order`));
+      item.quantity = cantidad03;
+      item.id = carta[3].id;
+      item.product = `${carta[3].prodName}`;
+      item.subTotal = cantidad03 * carta[3].price;
+      item.image = carta[3].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad03;
+            existItem.id = carta[3].id;
+            existItem.product = `${carta[3].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad03) * carta[3].price;
+            existItem.image = carta[3].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
+    }
+  };
+
+  const agregarCarrito04 = () => {
+    if (!sessionStorage.getItem(`order`)) {
+      item.quantity = cantidad04;
+      item.id = carta[4].id;
+      item.product = `${carta[4].prodName}`;
+      item.subTotal = cantidad04 * carta[4].price;
+      item.image = carta[4].image;
+      sessionStorage.setItem(`order`, JSON.stringify(order));
+    } else {
+      order = JSON.parse(sessionStorage.getItem(`order`));
+      item.quantity = cantidad04;
+      item.id = carta[4].id;
+      item.product = `${carta[4].prodName}`;
+      item.subTotal = cantidad04 * carta[4].price;
+      item.image = carta[4].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad04;
+            existItem.id = carta[4].id;
+            existItem.product = `${carta[4].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad04) * carta[4].price;
+            existItem.image = carta[4].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
+    }
+  };
+  const agregarCarrito05 = () => {
+    if (!sessionStorage.getItem(`order`)) {
+      item.quantity = cantidad05;
+      item.id = carta[5].id;
+      item.product = `${carta[5].prodName}`;
+      item.subTotal = cantidad05 * carta[5].price;
+      item.image = carta[5].image;
+      sessionStorage.setItem(`order`, JSON.stringify(order));
+    } else {
+      order = JSON.parse(sessionStorage.getItem(`order`));
+      item.quantity = cantidad05;
+      item.id = carta[5].id;
+      item.product = `${carta[5].prodName}`;
+      item.subTotal = cantidad05 * carta[5].price;
+      item.image = carta[5].image;
+
+      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      let exist = 0;
+      order.forEach((el) => {
+        if (el.id === item.id) {
+          exist++;
+        }
+      });
+      if (exist === 0) {
+        order.push(item);
+        sessionStorage.setItem(`order`, JSON.stringify(order));
+      } else {
+        /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
+        order.forEach((el) => {
+          if (el.id === item.id) {
+            existItem.quantity = el.quantity + cantidad05;
+            existItem.id = carta[5].id;
+            existItem.product = `${carta[5].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad05) * carta[5].price;
+            existItem.image = carta[5].image;
+            let newOrder = order.filter((el) => el.id !== item.id);
+            newOrder.push(existItem);
+            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+          }
+        });
+      }
+    }
+  };
+
   /* Contador de pedidos del carrito */
   const [cart, setCart] = useState(0);
   const [isActiveCart, setIsActiveCart] = useState(false);
-  const $cart = document.getElementsByClassName("div-cart");
 
   const cartOn = () => setIsActiveCart(true);
 
@@ -81,8 +302,6 @@ const Main = () => {
       cartOn();
     }
   }, [order]);
-
-  /*  - - - Modal Carrito - Listado del pedido - - -  */
 
   /* Contador de unidades para el botón "Agregar" dentro de las Modales */
   const [cantidad00, setCantidad00] = useState(1);
@@ -255,7 +474,8 @@ const Main = () => {
       </section>
       <ModalConfirm isOpen={isOpenConfirm} />
       <Modal isOpen={isOpenCart} closeModal={closeCart}>
-        <h2>Carrito</h2>
+        <h2>Mi Pedido</h2>
+        {sessionStorage.getItem(`order`) && <Cart isOpen={isOpenConfirm} />}
       </Modal>
       <Modal isOpen={isOpenModal00} closeModal={closeModal00}>
         <div className="modal-head">
@@ -307,7 +527,7 @@ const Main = () => {
             <button className="modal-btn-mas-menos" onClick={restarCantidad02}>
               -
             </button>
-            <button onClick={agregarCarrito} className="btn-agregar-carrito">
+            <button onClick={agregarCarrito02} className="btn-agregar-carrito">
               <h2>Agregar $ {cantidad02 * carta[2].price}</h2>
             </button>
           </div>
@@ -326,7 +546,7 @@ const Main = () => {
             <button className="modal-btn-mas-menos" onClick={restarCantidad03}>
               -
             </button>
-            <button onClick={agregarCarrito} className="btn-agregar-carrito">
+            <button onClick={agregarCarrito03} className="btn-agregar-carrito">
               <h2>Agregar $ {cantidad03 * carta[3].price}</h2>
             </button>
           </div>
@@ -345,7 +565,7 @@ const Main = () => {
             <button className="modal-btn-mas-menos" onClick={restarCantidad04}>
               -
             </button>
-            <button onClick={agregarCarrito} className="btn-agregar-carrito">
+            <button onClick={agregarCarrito04} className="btn-agregar-carrito">
               <h2>Agregar $ {cantidad04 * carta[4].price}</h2>
             </button>
           </div>
@@ -364,7 +584,7 @@ const Main = () => {
             <button className="modal-btn-mas-menos" onClick={restarCantidad05}>
               -
             </button>
-            <button onClick={agregarCarrito} className="btn-agregar-carrito">
+            <button onClick={agregarCarrito05} className="btn-agregar-carrito">
               <h2>Agregar $ {cantidad05 * carta[5].price}</h2>
             </button>
           </div>
