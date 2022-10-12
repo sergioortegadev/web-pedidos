@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Cart from "../components/Cart";
+// import Cart from "../components/Cart";
 import Modal from "../components/Modal";
-import ModalConfirm from "../components/ModalConfirm";
+// import ModalConfirm from "../components/ModalConfirm";
 import { useModal } from "../components/hooks/useModal";
 import "../components/Modal.css";
 import carta from "../db/Carta";
 
-export const Pizzas = () => {
+export const Pizzas = (orderPizza) => {
   /* Apertura y Cierre Ventanas Modales */
   const [isOpenModal00, openModal00, closeModal00] = useModal(false);
   const [isOpenModal01, openModal01, closeModal01] = useModal(false);
@@ -14,30 +14,41 @@ export const Pizzas = () => {
   const [isOpenModal03, openModal03, closeModal03] = useModal(false);
   const [isOpenModal04, openModal04, closeModal04] = useModal(false);
   const [isOpenModal05, openModal05, closeModal05] = useModal(false);
-  const [isOpenConfirm, openConfirm] = useModal(false);
+  // const [isOpenConfirm, openConfirm] = useModal(false);
 
-  /* Botón agregar al carrito */
+  // Traer o generar sessionStorage
+  let myOrderInit = JSON.parse(sessionStorage.getItem("order")) || [];
+
+  // var estado del pedido provisorio
+  const [myOrder, setMyOrder] = useState(myOrderInit);
+
+  /* - + - + -  Agregar al Carrito - + - + - */
   let item = {};
   let existItem = {};
   let order = [item];
 
+  /*  - -  Funcion Agregar al Carrito  - -  */
   const agregarCarrito00 = () => {
-    if (!sessionStorage.getItem(`order`)) {
-      item.quantity = cantidad00;
-      item.id = carta[0].id;
-      item.product = `${carta[0].prodName}`;
-      item.subTotal = cantidad00 * carta[0].price;
-      item.image = carta[0].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
-    } else {
-      order = JSON.parse(sessionStorage.getItem(`order`));
+    if (sessionStorage.getItem(`order`) === null) {
       item.quantity = cantidad00;
       item.id = carta[0].id;
       item.product = `${carta[0].prodName}`;
       item.subTotal = cantidad00 * carta[0].price;
       item.image = carta[0].image;
 
-      /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
+      order.push(item); // order = [...myOrder, item]
+      // sessionStorage.setItem(`order`, JSON.stringify(order));
+      setMyOrder(order);
+    } else {
+      order = JSON.parse(sessionStorage.getItem(`order`));
+
+      item.quantity = cantidad00;
+      item.id = carta[0].id;
+      item.product = `${carta[0].prodName}`;
+      item.subTotal = cantidad00 * carta[0].price;
+      item.image = carta[0].image;
+
+      /* SUMA PROD IGUALES, EVITA REPETICION. Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
       order.forEach((el) => {
         if (el.id === item.id) {
@@ -45,8 +56,9 @@ export const Pizzas = () => {
         }
       });
       if (exist === 0) {
-        order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+        order.push(item); // order = [...myOrder, item]
+        // sessionStorage.setItem(`order`, JSON.stringify(order));
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -58,13 +70,22 @@ export const Pizzas = () => {
             existItem.image = carta[0].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+            // sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+            setMyOrder(newOrder);
           }
         });
       }
     }
     closeModal00();
   };
+
+  //  useEffect guarda en localStorage y pasa el pedido al componente padre (solamente para actualizar el número de items del carrito)
+  useEffect(() => {
+    setInterval(() => {
+      orderPizza.orderPizza(myOrder);
+    }, 500);
+    sessionStorage.setItem(`order`, JSON.stringify(myOrder));
+  }, [myOrder]);
 
   const agregarCarrito01 = () => {
     if (!sessionStorage.getItem(`order`)) {
@@ -284,22 +305,6 @@ export const Pizzas = () => {
       }
     }
   };
-
-  /* Contador de pedidos del carrito */
-  const [cart, setCart] = useState(0);
-  const [isActiveCart, setIsActiveCart] = useState(false);
-
-  const cartOn = () => setIsActiveCart(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem(`order`) === null) {
-      setCart(0);
-    } else {
-      setCart(JSON.parse(sessionStorage.getItem(`order`)).length);
-      openConfirm();
-      cartOn();
-    }
-  }, [order]);
 
   /* Contador de unidades para el botón "Agregar" dentro de las Modales */
   const [cantidad00, setCantidad00] = useState(1);
@@ -554,11 +559,11 @@ export const Pizzas = () => {
             <p>{carta[5].description}</p>
           </Modal>
         </div>
-        <ModalConfirm isOpen={isOpenConfirm} />
+        {/*  <ModalConfirm isOpen={isOpenConfirm} />
         <Modal isOpen={isOpenCart} closeModal={closeCart}>
           <h2>Mi Pedido</h2>
           {sessionStorage.getItem(`order`) && <Cart isOpen={isOpenConfirm} />}
-        </Modal>
+        </Modal> */}
       </section>
     </>
   );

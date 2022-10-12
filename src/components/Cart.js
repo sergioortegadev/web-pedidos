@@ -8,26 +8,27 @@ const Cart = (isOpen) => {
   // console.log(db);
 
   useEffect(() => {
-    sessionOrder = JSON.parse(sessionStorage.getItem(`order`));
-  }, [db]);
+    setDb(JSON.parse(sessionStorage.getItem(`order`)));
+  }, [isOpen]);
 
   const deleteData = (id) => {
     /* SIN CONFIRMACION DE BORRADO */
     let newData = db.filter((el) => el.id !== id);
+    sessionStorage.setItem(`order`, JSON.stringify(newData));
     setDb(newData);
-    sessionStorage.setItem(`order`, JSON.stringify(db));
-    console.log(db);
 
-    /*  DELETE CON CONFIRMACION DE BORRADO
-   let idDelete = window.confirm(
+    /*  CON CONFIRMACION DE BORRADO 
+    let idDelete = window.confirm(
       `¿Estás seguro de eliminar el producto ${id} ?`
     );
     if (idDelete) {
       let newData = db.filter((el) => el.id !== id);
+      sessionStorage.setItem(`order`, JSON.stringify(newData));
       setDb(newData);
     } else {
       return;
-    } */
+    }
+    */
   };
 
   return (
