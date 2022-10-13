@@ -63,7 +63,11 @@ const Main = () => {
         <h3 className="cart-items">{cart}</h3>
       </div>
       <ModalConfirm isOpen={isOpenConfirm} closeModal={closeCart} />
-      <ModalCart isOpen={isOpenCart} closeModal={closeCart}>
+      <ModalCart
+        isOpen={isOpenCart}
+        closeModal={closeCart}
+        closeCart={closeCart}
+      >
         <h2>Mi Pedido</h2>
         {sessionStorage.getItem(`order`) && (
           <Cart isOpen={isOpenConfirm} closeCart={closeCart} />

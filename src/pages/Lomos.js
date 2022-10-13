@@ -34,8 +34,8 @@ export const Lomos = (orderUp) => {
       item.subTotal = cantidad00 * carta[6].price;
       item.image = carta[6].image;
 
-      order.push(item); // order = [...myOrder, item]
-      // sessionStorage.setItem(`order`, JSON.stringify(order));
+      order.push(item);
+
       setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
@@ -54,8 +54,8 @@ export const Lomos = (orderUp) => {
         }
       });
       if (exist === 0) {
-        order.push(item); // order = [...myOrder, item]
-        // sessionStorage.setItem(`order`, JSON.stringify(order));
+        order.push(item);
+
         setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
@@ -68,7 +68,7 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[6].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            // sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
             setMyOrder(newOrder);
           }
         });
@@ -92,7 +92,10 @@ export const Lomos = (orderUp) => {
       item.product = `${carta[7].prodName}`;
       item.subTotal = cantidad01 * carta[7].price;
       item.image = carta[7].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+
+      order.push(item);
+
+      setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad01;
@@ -110,7 +113,8 @@ export const Lomos = (orderUp) => {
       });
       if (exist === 0) {
         order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -122,7 +126,8 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[7].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
+            setMyOrder(newOrder);
           }
         });
       }
@@ -137,7 +142,10 @@ export const Lomos = (orderUp) => {
       item.product = `${carta[8].prodName}`;
       item.subTotal = cantidad02 * carta[8].price;
       item.image = carta[8].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+
+      order.push(item);
+
+      setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad02;
@@ -155,7 +163,8 @@ export const Lomos = (orderUp) => {
       });
       if (exist === 0) {
         order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -167,7 +176,8 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[8].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
+            setMyOrder(newOrder);
           }
         });
       }
@@ -182,7 +192,10 @@ export const Lomos = (orderUp) => {
       item.product = `${carta[9].prodName}`;
       item.subTotal = cantidad03 * carta[9].price;
       item.image = carta[9].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+
+      order.push(item);
+
+      setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad03;
@@ -200,7 +213,8 @@ export const Lomos = (orderUp) => {
       });
       if (exist === 0) {
         order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -212,7 +226,8 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[9].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
+            setMyOrder(newOrder);
           }
         });
       }
@@ -227,7 +242,10 @@ export const Lomos = (orderUp) => {
       item.product = `${carta[10].prodName}`;
       item.subTotal = cantidad04 * carta[10].price;
       item.image = carta[10].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+
+      order.push(item);
+
+      setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad04;
@@ -245,7 +263,8 @@ export const Lomos = (orderUp) => {
       });
       if (exist === 0) {
         order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -257,7 +276,8 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[10].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
+            setMyOrder(newOrder);
           }
         });
       }
@@ -271,7 +291,10 @@ export const Lomos = (orderUp) => {
       item.product = `${carta[11].prodName}`;
       item.subTotal = cantidad05 * carta[11].price;
       item.image = carta[11].image;
-      sessionStorage.setItem(`order`, JSON.stringify(order));
+
+      order.push(item);
+
+      setMyOrder(order);
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad05;
@@ -289,7 +312,8 @@ export const Lomos = (orderUp) => {
       });
       if (exist === 0) {
         order.push(item);
-        sessionStorage.setItem(`order`, JSON.stringify(order));
+
+        setMyOrder(order);
       } else {
         /* Recorro la orden que traje de sessionStorage, si encuentro un elemento con id igual al id del producto que intento agregar, los datos de ese producto se agregan a "existItem", luego en una nueva orden filtro la orden anterior (queda afuera el item con igual id), a la nueva orden le agrego los datos recien agregados en "existItem" y mando la nueva orden al sessionStorage */
         order.forEach((el) => {
@@ -301,7 +325,8 @@ export const Lomos = (orderUp) => {
             existItem.image = carta[11].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
-            sessionStorage.setItem(`order`, JSON.stringify(newOrder));
+
+            setMyOrder(newOrder);
           }
         });
       }

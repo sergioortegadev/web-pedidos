@@ -134,6 +134,15 @@ a {
   text-decoration: none;
 }
 
+/*  - - Datos y Envío - -  */
+
+.datos-pers {
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  margin: 2rem auto 0;
+}
+
 @media only screen and (max-width: 840px) {
   .logo {
     text-align: center;

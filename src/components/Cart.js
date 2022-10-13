@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CrudCart from "./CrudCart";
-import ModalConfirm from "./ModalConfirm";
 
-const Cart = ({ isOpen, closeCart }) => {
+const Cart = (isOpen) => {
   let sessionOrder = JSON.parse(sessionStorage.getItem(`order`));
   const [db, setDb] = useState(sessionOrder);
   // console.log(db);
@@ -34,8 +33,6 @@ const Cart = ({ isOpen, closeCart }) => {
   return (
     <>
       <CrudCart data={db} deleteData={deleteData} />
-      <br />
-      <ModalConfirm isOpen={isOpen} closeCart={closeCart} />
     </>
   );
 };

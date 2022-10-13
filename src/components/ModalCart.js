@@ -1,6 +1,7 @@
 import "./Modal.css";
+import ModalConfirm from "./ModalConfirm";
 
-const Modal = ({ children, isOpen, closeModal }) => {
+const Modal = ({ children, isOpen, closeModal, closeCart }) => {
   const handleModalClick = (e) => e.stopPropagation();
   return (
     <article
@@ -12,6 +13,7 @@ const Modal = ({ children, isOpen, closeModal }) => {
           X
         </button>
         {children}
+        <ModalConfirm isOpen={isOpen} closeCart={closeCart} />
       </div>
     </article>
   );
