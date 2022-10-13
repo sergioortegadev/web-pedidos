@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CrudCart from "./CrudCart";
 import ModalConfirm from "./ModalConfirm";
 
-const Cart = (isOpen) => {
+const Cart = ({ isOpen, closeCart }) => {
   let sessionOrder = JSON.parse(sessionStorage.getItem(`order`));
   const [db, setDb] = useState(sessionOrder);
   // console.log(db);
@@ -35,7 +35,7 @@ const Cart = (isOpen) => {
     <>
       <CrudCart data={db} deleteData={deleteData} />
       <br />
-      <ModalConfirm isOpen={isOpen} />
+      <ModalConfirm isOpen={isOpen} closeCart={closeCart} />
     </>
   );
 };

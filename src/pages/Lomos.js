@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import Cart from "../components/Cart";
 import Modal from "../components/Modal";
-// import ModalConfirm from "../components/ModalConfirm";
 import { useModal } from "../components/hooks/useModal";
 import "../components/Modal.css";
 import carta from "../db/Carta";
 
-export const Pizzas = (orderUp) => {
+export const Lomos = (orderUp) => {
   /* Apertura y Cierre Ventanas Modales */
   const [isOpenModal00, openModal00, closeModal00] = useModal(false);
   const [isOpenModal01, openModal01, closeModal01] = useModal(false);
@@ -31,10 +29,10 @@ export const Pizzas = (orderUp) => {
   const agregarCarrito00 = () => {
     if (sessionStorage.getItem(`order`) === null) {
       item.quantity = cantidad00;
-      item.id = carta[0].id;
-      item.product = `${carta[0].prodName}`;
-      item.subTotal = cantidad00 * carta[0].price;
-      item.image = carta[0].image;
+      item.id = carta[6].id;
+      item.product = `${carta[6].prodName}`;
+      item.subTotal = cantidad00 * carta[6].price;
+      item.image = carta[6].image;
 
       order.push(item); // order = [...myOrder, item]
       // sessionStorage.setItem(`order`, JSON.stringify(order));
@@ -43,10 +41,10 @@ export const Pizzas = (orderUp) => {
       order = JSON.parse(sessionStorage.getItem(`order`));
 
       item.quantity = cantidad00;
-      item.id = carta[0].id;
-      item.product = `${carta[0].prodName}`;
-      item.subTotal = cantidad00 * carta[0].price;
-      item.image = carta[0].image;
+      item.id = carta[6].id;
+      item.product = `${carta[6].prodName}`;
+      item.subTotal = cantidad00 * carta[6].price;
+      item.image = carta[6].image;
 
       /* SUMA PROD IGUALES, EVITA REPETICION. Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -64,10 +62,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad00;
-            existItem.id = carta[0].id;
-            existItem.product = `${carta[0].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad00) * carta[0].price;
-            existItem.image = carta[0].image;
+            existItem.id = carta[6].id;
+            existItem.product = `${carta[6].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad00) * carta[6].price;
+            existItem.image = carta[6].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             // sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -83,7 +81,6 @@ export const Pizzas = (orderUp) => {
   useEffect(() => {
     setInterval(() => {
       orderUp.orderUp(myOrder);
-      //console.log(orderUp);
     }, 500);
     sessionStorage.setItem(`order`, JSON.stringify(myOrder));
   }, [myOrder]);
@@ -91,18 +88,18 @@ export const Pizzas = (orderUp) => {
   const agregarCarrito01 = () => {
     if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad01;
-      item.id = carta[1].id;
-      item.product = `${carta[1].prodName}`;
-      item.subTotal = cantidad01 * carta[1].price;
-      item.image = carta[1].image;
+      item.id = carta[7].id;
+      item.product = `${carta[7].prodName}`;
+      item.subTotal = cantidad01 * carta[7].price;
+      item.image = carta[7].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad01;
-      item.id = carta[1].id;
-      item.product = `${carta[1].prodName}`;
-      item.subTotal = cantidad01 * carta[1].price;
-      item.image = carta[1].image;
+      item.id = carta[7].id;
+      item.product = `${carta[7].prodName}`;
+      item.subTotal = cantidad01 * carta[7].price;
+      item.image = carta[7].image;
 
       /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -119,10 +116,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad01;
-            existItem.id = carta[1].id;
-            existItem.product = `${carta[1].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad01) * carta[1].price;
-            existItem.image = carta[1].image;
+            existItem.id = carta[7].id;
+            existItem.product = `${carta[7].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad01) * carta[7].price;
+            existItem.image = carta[7].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -136,18 +133,18 @@ export const Pizzas = (orderUp) => {
   const agregarCarrito02 = () => {
     if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad02;
-      item.id = carta[2].id;
-      item.product = `${carta[2].prodName}`;
-      item.subTotal = cantidad02 * carta[2].price;
-      item.image = carta[2].image;
+      item.id = carta[8].id;
+      item.product = `${carta[8].prodName}`;
+      item.subTotal = cantidad02 * carta[8].price;
+      item.image = carta[8].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad02;
-      item.id = carta[2].id;
-      item.product = `${carta[2].prodName}`;
-      item.subTotal = cantidad02 * carta[2].price;
-      item.image = carta[2].image;
+      item.id = carta[8].id;
+      item.product = `${carta[8].prodName}`;
+      item.subTotal = cantidad02 * carta[8].price;
+      item.image = carta[8].image;
 
       /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -164,10 +161,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad02;
-            existItem.id = carta[2].id;
-            existItem.product = `${carta[2].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad02) * carta[2].price;
-            existItem.image = carta[2].image;
+            existItem.id = carta[8].id;
+            existItem.product = `${carta[8].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad02) * carta[8].price;
+            existItem.image = carta[8].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -181,18 +178,18 @@ export const Pizzas = (orderUp) => {
   const agregarCarrito03 = () => {
     if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad03;
-      item.id = carta[3].id;
-      item.product = `${carta[3].prodName}`;
-      item.subTotal = cantidad03 * carta[3].price;
-      item.image = carta[3].image;
+      item.id = carta[9].id;
+      item.product = `${carta[9].prodName}`;
+      item.subTotal = cantidad03 * carta[9].price;
+      item.image = carta[9].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad03;
-      item.id = carta[3].id;
-      item.product = `${carta[3].prodName}`;
-      item.subTotal = cantidad03 * carta[3].price;
-      item.image = carta[3].image;
+      item.id = carta[9].id;
+      item.product = `${carta[9].prodName}`;
+      item.subTotal = cantidad03 * carta[9].price;
+      item.image = carta[9].image;
 
       /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -209,10 +206,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad03;
-            existItem.id = carta[3].id;
-            existItem.product = `${carta[3].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad03) * carta[3].price;
-            existItem.image = carta[3].image;
+            existItem.id = carta[9].id;
+            existItem.product = `${carta[9].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad03) * carta[9].price;
+            existItem.image = carta[9].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -226,18 +223,18 @@ export const Pizzas = (orderUp) => {
   const agregarCarrito04 = () => {
     if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad04;
-      item.id = carta[4].id;
-      item.product = `${carta[4].prodName}`;
-      item.subTotal = cantidad04 * carta[4].price;
-      item.image = carta[4].image;
+      item.id = carta[10].id;
+      item.product = `${carta[10].prodName}`;
+      item.subTotal = cantidad04 * carta[10].price;
+      item.image = carta[10].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad04;
-      item.id = carta[4].id;
-      item.product = `${carta[4].prodName}`;
-      item.subTotal = cantidad04 * carta[4].price;
-      item.image = carta[4].image;
+      item.id = carta[10].id;
+      item.product = `${carta[10].prodName}`;
+      item.subTotal = cantidad04 * carta[10].price;
+      item.image = carta[10].image;
 
       /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -254,10 +251,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad04;
-            existItem.id = carta[4].id;
-            existItem.product = `${carta[4].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad04) * carta[4].price;
-            existItem.image = carta[4].image;
+            existItem.id = carta[10].id;
+            existItem.product = `${carta[10].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad04) * carta[10].price;
+            existItem.image = carta[10].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -267,22 +264,21 @@ export const Pizzas = (orderUp) => {
     }
     closeModal04();
   };
-
   const agregarCarrito05 = () => {
     if (!sessionStorage.getItem(`order`)) {
       item.quantity = cantidad05;
-      item.id = carta[5].id;
-      item.product = `${carta[5].prodName}`;
-      item.subTotal = cantidad05 * carta[5].price;
-      item.image = carta[5].image;
+      item.id = carta[11].id;
+      item.product = `${carta[11].prodName}`;
+      item.subTotal = cantidad05 * carta[11].price;
+      item.image = carta[11].image;
       sessionStorage.setItem(`order`, JSON.stringify(order));
     } else {
       order = JSON.parse(sessionStorage.getItem(`order`));
       item.quantity = cantidad05;
-      item.id = carta[5].id;
-      item.product = `${carta[5].prodName}`;
-      item.subTotal = cantidad05 * carta[5].price;
-      item.image = carta[5].image;
+      item.id = carta[11].id;
+      item.product = `${carta[11].prodName}`;
+      item.subTotal = cantidad05 * carta[11].price;
+      item.image = carta[11].image;
 
       /* Si no existe producto con el mismo id, el contador "exist" se mantendrá en cero, entonces agrego "item" a "order", y lo mando a sessionStorage */
       let exist = 0;
@@ -299,10 +295,10 @@ export const Pizzas = (orderUp) => {
         order.forEach((el) => {
           if (el.id === item.id) {
             existItem.quantity = el.quantity + cantidad05;
-            existItem.id = carta[5].id;
-            existItem.product = `${carta[5].prodName}`;
-            existItem.subTotal = (el.quantity + cantidad05) * carta[5].price;
-            existItem.image = carta[5].image;
+            existItem.id = carta[11].id;
+            existItem.product = `${carta[11].prodName}`;
+            existItem.subTotal = (el.quantity + cantidad05) * carta[11].price;
+            existItem.image = carta[11].image;
             let newOrder = order.filter((el) => el.id !== item.id);
             newOrder.push(existItem);
             sessionStorage.setItem(`order`, JSON.stringify(newOrder));
@@ -348,20 +344,58 @@ export const Pizzas = (orderUp) => {
 
   return (
     <>
-      <section id="pizzas" className="contenedor">
+      <section id="lomos" className="contenedor">
         <div className="cards">
+          <template id="prod-template">
+            <figure>
+              <img />
+              <figcaption>
+                <h3></h3>
+                <h2></h2>
+              </figcaption>
+            </figure>
+            <Modal isOpen={isOpenModal00} closeModal={closeModal00}>
+              <div className="modal-head">
+                <img src={carta[0].image} alt={carta[0].prodName} />
+                <div className="modal-tit">
+                  <h3>{carta[0].prodName}</h3>
+                  <button
+                    className="modal-btn-mas-menos"
+                    onClick={sumarCantidad00}
+                  >
+                    +
+                  </button>
+                  <p className="modal-cantidad">{cantidad00}</p>
+                  <button
+                    className="modal-btn-mas-menos"
+                    onClick={restarCantidad00}
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={agregarCarrito00}
+                    className="btn-agregar-carrito"
+                  >
+                    <h2>Agregar ${cantidad00 * carta[0].price}</h2>
+                  </button>
+                </div>
+              </div>
+              <p>{carta[0].description}</p>
+            </Modal>
+          </template>
+
           <figure onClick={openModal00} className="card">
-            <img src={carta[0].image} alt={carta[0].prodName} />
+            <img src={carta[6].image} alt={carta[6].prodName} />
             <figcaption>
-              <h3>{carta[0].prodName}</h3>
-              <h2>${carta[0].price}</h2>
+              <h3>{carta[6].prodName}</h3>
+              <h2>${carta[6].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal00} closeModal={closeModal00}>
             <div className="modal-head">
-              <img src={carta[0].image} alt={carta[0].prodName} />
+              <img src={carta[6].image} alt={carta[6].prodName} />
               <div className="modal-tit">
-                <h3>{carta[0].prodName}</h3>
+                <h3>{carta[6].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad00}
@@ -379,25 +413,25 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito00}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar ${cantidad00 * carta[0].price}</h2>
+                  <h2>Agregar ${cantidad00 * carta[6].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[0].description}</p>
+            <p>{carta[6].description}</p>
           </Modal>
 
           <figure onClick={openModal01} className="card">
-            <img src={carta[1].image} alt={carta[1].prodName} />
+            <img src={carta[7].image} alt={carta[7].prodName} />
             <figcaption>
-              <h3>{carta[1].prodName}</h3>
-              <h2>${carta[1].price}</h2>
+              <h3>{carta[7].prodName}</h3>
+              <h2>${carta[7].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal01} closeModal={closeModal01}>
             <div className="modal-head">
-              <img src={carta[1].image} alt={carta[1].prodName} />
+              <img src={carta[7].image} alt={carta[7].prodName} />
               <div className="modal-tit">
-                <h3>{carta[1].prodName}</h3>
+                <h3>{carta[7].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad01}
@@ -415,25 +449,25 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito01}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar $ {cantidad01 * carta[1].price}</h2>
+                  <h2>Agregar $ {cantidad01 * carta[7].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[1].description}</p>
+            <p>{carta[7].description}</p>
           </Modal>
 
           <figure onClick={openModal02} className="card">
-            <img src={carta[2].image} alt={carta[2].prodName} />
+            <img src={carta[8].image} alt={carta[8].prodName} />
             <figcaption>
-              <h3>{carta[2].prodName}</h3>
-              <h2>${carta[2].price}</h2>
+              <h3>{carta[8].prodName}</h3>
+              <h2>${carta[8].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal02} closeModal={closeModal02}>
             <div className="modal-head">
-              <img src={carta[2].image} alt={carta[2].prodName} />
+              <img src={carta[8].image} alt={carta[8].prodName} />
               <div className="modal-tit">
-                <h3>{carta[2].prodName}</h3>
+                <h3>{carta[8].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad02}
@@ -451,25 +485,25 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito02}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar $ {cantidad02 * carta[2].price}</h2>
+                  <h2>Agregar $ {cantidad02 * carta[8].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[2].description}</p>
+            <p>{carta[8].description}</p>
           </Modal>
 
           <figure onClick={openModal03} className="card">
-            <img src={carta[3].image} alt={carta[3].prodName} />
+            <img src={carta[9].image} alt={carta[9].prodName} />
             <figcaption>
-              <h3>{carta[3].prodName}</h3>
-              <h2>${carta[3].price}</h2>
+              <h3>{carta[9].prodName}</h3>
+              <h2>${carta[9].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal03} closeModal={closeModal03}>
             <div className="modal-head">
-              <img src={carta[3].image} alt={carta[3].prodName} />
+              <img src={carta[9].image} alt={carta[9].prodName} />
               <div className="modal-tit">
-                <h3>{carta[3].prodName}</h3>
+                <h3>{carta[9].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad03}
@@ -487,25 +521,25 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito03}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar $ {cantidad03 * carta[3].price}</h2>
+                  <h2>Agregar $ {cantidad03 * carta[9].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[3].description}</p>
+            <p>{carta[9].description}</p>
           </Modal>
 
           <figure onClick={openModal04} className="card">
-            <img src={carta[4].image} alt={carta[4].prodName} />
+            <img src={carta[10].image} alt={carta[10].prodName} />
             <figcaption>
-              <h3>{carta[4].prodName}</h3>
-              <h2>${carta[4].price}</h2>
+              <h3>{carta[10].prodName}</h3>
+              <h2>${carta[10].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal04} closeModal={closeModal04}>
             <div className="modal-head">
-              <img src={carta[4].image} alt={carta[4].prodName} />
+              <img src={carta[10].image} alt={carta[10].prodName} />
               <div className="modal-tit">
-                <h3>{carta[4].prodName}</h3>
+                <h3>{carta[10].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad04}
@@ -523,25 +557,25 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito04}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar $ {cantidad04 * carta[4].price}</h2>
+                  <h2>Agregar $ {cantidad04 * carta[10].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[4].description}</p>
+            <p>{carta[10].description}</p>
           </Modal>
 
           <figure onClick={openModal05} className="card">
-            <img src={carta[5].image} alt={carta[5].prodName} />
+            <img src={carta[11].image} alt={carta[11].prodName} />
             <figcaption>
-              <h3>{carta[5].prodName}</h3>
-              <h2>${carta[5].price}</h2>
+              <h3>{carta[11].prodName}</h3>
+              <h2>${carta[11].price}</h2>
             </figcaption>
           </figure>
           <Modal isOpen={isOpenModal05} closeModal={closeModal05}>
             <div className="modal-head">
-              <img src={carta[5].image} alt={carta[5].prodName} />
+              <img src={carta[11].image} alt={carta[11].prodName} />
               <div className="modal-tit">
-                <h3>{carta[5].prodName}</h3>
+                <h3>{carta[11].prodName}</h3>
                 <button
                   className="modal-btn-mas-menos"
                   onClick={sumarCantidad05}
@@ -559,11 +593,11 @@ export const Pizzas = (orderUp) => {
                   onClick={agregarCarrito05}
                   className="btn-agregar-carrito"
                 >
-                  <h2>Agregar $ {cantidad05 * carta[5].price}</h2>
+                  <h2>Agregar $ {cantidad05 * carta[11].price}</h2>
                 </button>
               </div>
             </div>
-            <p>{carta[5].description}</p>
+            <p>{carta[11].description}</p>
           </Modal>
         </div>
         {/*  <ModalConfirm isOpen={isOpenConfirm} />

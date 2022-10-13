@@ -1,15 +1,15 @@
 import "./Modal.css";
+import { Link } from "react-router-dom";
 
-const ModalConfirm = ({ isOpen }) => {
-  const handleModalClick = (e) => {
-    console.log(" - - - Abrir Checkout - - - ");
-  };
+const ModalConfirm = ({ isOpen, closeCart }) => {
   return (
-    <article className={`modal-confirm ${isOpen && `is-open`}`}>
-      <div onClick={handleModalClick} className="modal-confirm-div">
-        <h3>Confirmar Pedido</h3>
-      </div>
-    </article>
+    <Link to="datos" onClick={closeCart}>
+      <article className={`modal-confirm ${isOpen && `is-open`}`}>
+        <div className="modal-confirm-div">
+          <h3>Confirmar Pedido</h3>
+        </div>
+      </article>
+    </Link>
   );
 };
 

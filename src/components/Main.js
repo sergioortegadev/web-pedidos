@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
-// import { useModalConfirm } from "./hooks/useModal";
-import Modal from "./Modal";
+import ModalCart from "./ModalCart";
 import ModalConfirm from "./ModalConfirm";
 import { useModal } from "./hooks/useModal";
 import "./Modal.css";
 import Cart from "./Cart";
-import { Routes, Route, Navigate, HashRouter, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import { Pizzas } from "../pages/Pizzas";
+import { Lomos } from "../pages/Lomos";
+import { Empanadas } from "../pages/Empanadas";
+import DatosYEnvio from "../pages/DatosYEnvio";
 
 const Main = () => {
   /*  - -  Cerrar Modales con tecla ESC - Falta revision - - -  */
@@ -22,10 +24,10 @@ const Main = () => {
     }
   }; */
 
-  /*  - - - - Carta en archivo db.js - - - - */
+  /* Carrito y bnt Confirmar - Apertura y cierre modales */
 
   const [isOpenCart, openCart, closeCart] = useModal(false);
-  const [isOpenConfirm, openConfirm] = useModal(false);
+  const [isOpenConfirm, openConfirm, closeConfirm] = useModal(false);
 
   /*   -  Contador de pedidos del carrito y visualizacion activa   -  */
   const [cart, setCart] = useState(0);
@@ -41,6 +43,7 @@ const Main = () => {
       sessionStorage.getItem(`order`) === null
     ) {
       setCart(0);
+      closeConfirm();
       setIsActiveCart(false);
     } else {
       setCart(JSON.parse(sessionStorage.getItem(`order`)).length);
@@ -51,6 +54,7 @@ const Main = () => {
 
   return (
     <div /* onKeyDown={handleEsc} */>
+      {/*  - Carrito y btn Confirm -  */}
       <div
         onClick={openCart}
         className={`div-cart ${isActiveCart && `is-open`}`}
@@ -58,22 +62,22 @@ const Main = () => {
         <img src="./assets/cart.png" alt="cart" />
         <h3 className="cart-items">{cart}</h3>
       </div>
-      <ModalConfirm isOpen={isOpenConfirm} />
-      <Modal isOpen={isOpenCart} closeModal={closeCart}>
+      <ModalConfirm isOpen={isOpenConfirm} closeModal={closeCart} />
+      <ModalCart isOpen={isOpenCart} closeModal={closeCart}>
         <h2>Mi Pedido</h2>
-        {sessionStorage.getItem(`order`) && <Cart isOpen={isOpenConfirm} />}
-      </Modal>
+        {sessionStorage.getItem(`order`) && (
+          <Cart isOpen={isOpenConfirm} closeCart={closeCart} />
+        )}
+      </ModalCart>
 
-      <HashRouter>
-        <Link to="/">Home</Link>
-        <Link to="/pizzas">Pizzas</Link>
-        <Link to="/lomos">Lomitos</Link>
-        <Link to="/empanadas">Empanadas</Link>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="pizzas" element={<Pizzas orderPizza={handleOrder} />} />
-        </Routes>
-      </HashRouter>
+      {/* HashRouter en App.js para que englobe todo el sitio: Header, Main, etc*/}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="pizzas" element={<Pizzas orderUp={handleOrder} />} />
+        <Route path="lomos" element={<Lomos orderUp={handleOrder} />} />
+        <Route path="empanadas" element={<Empanadas orderUp={handleOrder} />} />
+        <Route path="datos" element={<DatosYEnvio />} />
+      </Routes>
     </div>
   );
 };
