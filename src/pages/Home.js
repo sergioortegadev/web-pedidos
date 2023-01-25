@@ -20,7 +20,7 @@ const Home = () => {
           </Link>
           <Link to="lomos">
             <figure className="card">
-              <img src={carta[6].image} alt={carta[6].prodName} />
+              <img src={carta[10].image} alt={carta[6].prodName} />
               <figcaption>
                 <h3>Lomos</h3>
                 {/* <h2>${carta[0].price}</h2> */}
@@ -29,7 +29,7 @@ const Home = () => {
           </Link>
           <Link to="empanadas">
             <figure className="card">
-              <img src={carta[12].image} alt={carta[12].prodName} />
+              <img src={carta[16].image} alt={carta[12].prodName} />
               <figcaption>
                 <h3>Empanadas</h3>
                 {/* <h2>${carta[0].price}</h2> */}

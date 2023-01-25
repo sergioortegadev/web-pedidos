@@ -54,6 +54,42 @@ const carta = [
     image: "./assets/pizza2.jpg",
   },
   {
+    id: 1006,
+    category: "Pizzas",
+    prodName: "Muzzarella",
+    description:
+      "Mozzarella, ruedas de tomate, verdeo fresco recién cortado, cebolla caramelizada en juliana, panceta confitada, olivas y orégano.",
+    price: 970,
+    image: "./assets/pizza3.jpg",
+  },
+  {
+    id: 1007,
+    category: "Pizzas",
+    prodName: "Clasica Morrón",
+    description:
+      "Morrón, mozzarella, ruedas de tomate, verdeo fresco recién cortado, cebolla caramelizada en juliana, panceta confitada, olivas y orégano.",
+    price: 960,
+    image: "./assets/pizza4.jpg",
+  },
+  {
+    id: 1008,
+    category: "Pizzas",
+    prodName: "Margarita",
+    description:
+      "Margaritas recien cortadas del jardín, mozzarella, ruedas de tomate, verdeo fresco recién cortado, cebolla caramelizada en juliana, panceta confitada, olivas y orégano.",
+    price: 1024,
+    image: "./assets/pizza1.jpg",
+  },
+  {
+    id: 1009,
+    category: "Pizzas",
+    prodName: "Cuatro Quesos",
+    description:
+      "Queso uno, queso dos, queso tres y queso cuatro. Y ruedas de tomate, verdeo fresco recién cortado, cebolla caramelizada en juliana, panceta confitada, olivas y orégano.",
+    price: 1009,
+    image: "./assets/pizza2.jpg",
+  },
+  {
     id: 2000,
     category: "Lomitos",
     prodName: "Lomito simple",
